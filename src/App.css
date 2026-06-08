@@ -6,15 +6,10 @@
   padding: 0;
 }
 
-.entry-desc {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #555;
-}
 
 /* Move your about-text down here so it gets the final say! */
 .about-text {
-  font-size: 1.25rem !important; 
+  font-size: 0.65rem !important; 
   line-height: 1.8 !important;   
   font-weight: 500 !important;   
   color: #333 !important;        
@@ -28,7 +23,7 @@ body {
 
 .page-title,
 .page-year {
-  font-size: 1.25rem !important; 
+  font-size: 0.65rem !important; 
   line-height: 1.8 !important;   
   font-weight: 500 !important;   
   color: #333 !important; 
@@ -62,9 +57,9 @@ html, body, #root {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   
   /* Your existing layout rules */
-  width: 80%;
+  width: 90%;
   min-height: 100vh; 
-  margin: 40px auto; /* 'auto' keeps it perfectly centered horizontally */
+  margin: 20px auto; /* 'auto' keeps it perfectly centered horizontally */
   border-radius: 20px; 
   
   /* Keep your items centered inside */
@@ -72,8 +67,8 @@ html, body, #root {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start; /* Keeps items near the top */
-  gap: 40px;
-  padding: 40px 20px;
+  gap: 10px; /* Reduce gap inside the glass container */
+  padding: 20px; /* Reduce internal padding */
 }
 
 /* The "Desk" Background */
@@ -98,13 +93,15 @@ html, body, #root {
 }
 /* The New Header Image Styling */
 .desk-header-image {
-  max-width: 800px; 
+  max-width: 700px; 
   width: 70%;
   transform: rotate(-2deg); 
   transition: transform 0.3s ease, filter 0.3s ease;
   
   /* THIS PUSHES IT TO THE RIGHT */
   align-self: flex-end;
+  margin-right: -70px;
+  
 }
 
 .desk-header-image:hover {
@@ -114,6 +111,7 @@ html, body, #root {
 .notebook-container {
   display: flex;
   background: #f8f9fa;
+
   
   /* --- CHANGED THESE TWO LINES --- */
   max-width: 1400px; /* Increased from 1100px for wider desktop screens */
@@ -124,16 +122,13 @@ html, body, #root {
   position: relative;
 }
 
-/* Wrapper to hold both images side-by-side */
 .desk-header-wrapper {
-  width: 95%;
-  max-width: 1400px;
+  width: 85%;
+  max-width: 1000px;
   display: flex;
-  justify-content: space-between; 
-  
-  /* THE FIX: Aligns them by their middle instead of their bottoms */
-  align-items: center; 
-  margin-bottom: 10px; 
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0px; /* Reduce space between header and notebook */
 }
 
 
@@ -145,6 +140,7 @@ html, body, #root {
   width: 50%;
   transform: rotate(2deg); 
   transition: transform 0.3s ease, filter 0.3s ease;
+  margin-left: -30px;
   
 }
 
@@ -177,16 +173,48 @@ html, body, #root {
 }
 .tab-blue { background: #93c5fd; }
 .tab-green { background: #86efac; }
-.tab-orange { background: #fdba74; }
 .tab-yellow { background: #fef08a; }
 
-/* The Pages */
+.tab-blue:hover {
+  background:#c084fc;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+}
+
+.tab-green:hover {
+  background:#facc15;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+}
+
+.tab-yellow:hover {
+  background:#f472b6;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+}
+
 .page {
   flex: 1;
-  padding: 50px;
+  padding: 40px; /* Reduced from 50px */
   display: flex;
   flex-direction: column;
   position: relative;
+  gap: 10px; /* Adds consistent spacing between sections */
+}
+
+/* Ensure sections don't have conflicting margins */
+.section {
+  margin-bottom: 10px; /* Standardized spacing */
+}
+
+/* Fix the .bubble-header margin to tighten up the top of sections */
+.bubble-header {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.5rem; /* Slightly smaller to fit better */
+  letter-spacing: 2px;
+  margin-bottom: 10px; /* Reduced from 20px */
+  -webkit-text-stroke: 1.5px #000;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
 }
 
 .left-page {
@@ -265,7 +293,7 @@ html, body, #root {
   margin-bottom: 8px;
 }
 .entry-desc {
-  font-size: 0.9rem;
+  font-size: 0.65rem;
   line-height: 1.5;
   color: #555;
 }
@@ -286,9 +314,8 @@ html, body, #root {
   border: 2px solid #000;
   border-radius: 30px;
   box-shadow: 3px 3px 0px #000;
-  font-size: 1rem;
+  font-size: 0.65rem;
   transition: transform 0.2s;
-  cursor: pointer;
 }
 .sticker:hover { z-index: 10; transform: scale(1.1) !important; }
 
@@ -403,13 +430,18 @@ html, body, #root {
   }
 }
 
-/* --- THE EXPERTISE GRID LAYOUT --- */
 .expertise-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
-  gap: 40px; /* Space between the items */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; /* Reduced from 40px */
   width: 100%;
-  padding-top: 10px;
+  padding-top: 5px; /* Reduced from 10px */
+}
+
+.picture-placeholder {
+  width: 120px; /* Slightly smaller to fit the page better */
+  height: 120px;
+  /* ... rest of your existing styles ... */
 }
 
 /* Individual Item Container (Holds 1 Pic + 1 Label) */
@@ -570,7 +602,7 @@ html, body, #root {
 .contact-item {
   display: block;
   font-family: 'Fredoka One', cursive;
-  font-size: 1.2rem;
+  font-size: 0.65rem;
   color: #333;
   text-decoration: none;
   padding: 15px;
@@ -585,4 +617,13 @@ html, body, #root {
   background: #fef08a;
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0px #000;
+}
+
+.quote {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  -webkit-text-stroke: 1px #000;
+  text-shadow: 2px 2px 0px rgba(45, 66, 255, 0.1);
 }

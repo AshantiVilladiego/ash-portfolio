@@ -185,9 +185,9 @@ I’m stepping into the industry and eager to apply my background in Big Data an
                  <div className="section" style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                    <div className="sticker" style={{ background: '#fef08a', transform: 'rotate(-3deg)', padding: '20px', textAlign: 'center' }}>
                      <h3 style={{ fontFamily: 'Fredoka One', marginBottom: '10px' }}>Open for Work!</h3>
-                     <p style={{ fontSize: '0.9rem' }}>Currently exploring new opportunities in Big Data & IoT.</p>
+                     <p style={{ fontSize: '0.9rem' }}>Currently exploring new opportunities in Big Data & Software Engineering.</p>
                    </div>
-                   <p className="entry-desc" style={{ marginTop: '40px', fontStyle: 'italic' }}>"Turning data into reality."</p>
+                   <p className="quote" style={{ marginTop: '40px', fontStyle: 'italic' }}>The world is your oyster</p>
                  </div>
                </div>
              </>
