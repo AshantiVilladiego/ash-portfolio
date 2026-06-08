@@ -1,0 +1,588 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.entry-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* Move your about-text down here so it gets the final say! */
+.about-text {
+  font-size: 1.25rem !important; 
+  line-height: 1.8 !important;   
+  font-weight: 500 !important;   
+  color: #333 !important;        
+}
+body {
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  max-width: 1440px;
+  width: 100%;
+}
+
+.page-title,
+.page-year {
+  font-size: 1.25rem !important; 
+  line-height: 1.8 !important;   
+  font-weight: 500 !important;   
+  color: #333 !important; 
+}
+
+
+/* 1. Break out of Vite's default #root container */
+html, body, #root {
+  max-width: 100% !important;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents an annoying horizontal scrollbar */
+}
+
+/* The Full-Page Glass Overlay */
+.glass-container {
+  /* 1. The Frost/Tint */
+  background: rgba(255, 255, 255, 0.2); 
+  
+  /* 2. The Blur (Slightly stronger for a better effect) */
+  backdrop-filter: blur(16px); 
+  -webkit-backdrop-filter: blur(16px); 
+  
+  /* 3. THE SECRET: The Glass Edge (Creates a light reflection/glare) */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.1); /* Darker on the right */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Darker on the bottom */
+  
+  /* 4. THE SECRET: The Shadow (Lifts the glass off the desk) */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  
+  /* Your existing layout rules */
+  width: 80%;
+  min-height: 100vh; 
+  margin: 40px auto; /* 'auto' keeps it perfectly centered horizontally */
+  border-radius: 20px; 
+  
+  /* Keep your items centered inside */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Keeps items near the top */
+  gap: 40px;
+  padding: 40px 20px;
+}
+
+/* The "Desk" Background */
+.desk-background {
+  background-color: honeydew;
+  
+  /* THIS CREATES THE DOTTED PATTERN */
+  background-image: radial-gradient(rgba(130, 180, 150, 0.4) 2px, transparent 2px);
+  
+  /* THIS CONTROLS THE SPACING BETWEEN DOTS (25px apart) */
+  background-size: 25px 25px; 
+  
+  background-attachment: fixed;
+  mix-blend-mode: multiply;
+
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  flex-direction: column; /* THIS MAKES THEM STACK */
+  justify-content: center;
+  align-items: center;
+}
+/* The New Header Image Styling */
+.desk-header-image {
+  max-width: 800px; 
+  width: 70%;
+  transform: rotate(-2deg); 
+  transition: transform 0.3s ease, filter 0.3s ease;
+  
+  /* THIS PUSHES IT TO THE RIGHT */
+  align-self: flex-end;
+}
+
+.desk-header-image:hover {
+  transform: scale(0.8) rotate(1deg); 
+}
+/* The Notebook */
+.notebook-container {
+  display: flex;
+  background: #f8f9fa;
+  
+  /* --- CHANGED THESE TWO LINES --- */
+  max-width: 1400px; /* Increased from 1100px for wider desktop screens */
+  width: 95%;        /* Uses 95% of the available screen space */
+  /* ------------------------------- */
+
+  height: 800px; 
+  position: relative;
+}
+
+/* Wrapper to hold both images side-by-side */
+.desk-header-wrapper {
+  width: 95%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between; 
+  
+  /* THE FIX: Aligns them by their middle instead of their bottoms */
+  align-items: center; 
+  margin-bottom: 10px; 
+}
+
+
+
+/* The New Left Picture (Polaroid Style) */
+.desk-left-image {
+  /* CHANGED: Increased max-width and width to make it significantly bigger */
+  max-width: 400px; 
+  width: 50%;
+  transform: rotate(2deg); 
+  transition: transform 0.3s ease, filter 0.3s ease;
+  
+}
+
+.desk-left-image:hover {
+  transform: scale(0.8) rotate(1deg); 
+}
+
+/* Side Tabs */
+.tabs {
+  position: absolute;
+  right: -40px;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tab {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding: 20px 8px;
+  border-radius: 0 10px 10px 0;
+  font-weight: bold;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-left: none;
+  cursor: pointer;
+}
+.tab-blue { background: #93c5fd; }
+.tab-green { background: #86efac; }
+.tab-orange { background: #fdba74; }
+.tab-yellow { background: #fef08a; }
+
+/* The Pages */
+.page {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.left-page {
+  border-radius: 20px 0 0 20px;
+}
+.right-page {
+  border-radius: 0 20px 20px 0;
+}
+
+/* The Book Spine / Crease */
+.spine {
+  width: 40px;
+  background: linear-gradient(to right, 
+    rgba(0,0,0,0.02) 0%, 
+    rgba(0,0,0,0.1) 40%, 
+    rgba(0,0,0,0.15) 50%, 
+    rgba(0,0,0,0.1) 60%, 
+    rgba(0,0,0,0.02) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-left: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.5);
+}
+
+.hole {
+  width: 8px;
+  height: 8px;
+  background: #ccc;
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Typography & Layout */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #666;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.bubble-header {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  -webkit-text-stroke: 1.5px #000;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+.text-blue { color: #bfdbfe; }
+.text-green { color: #bbf7d0; }
+.text-orange { color: #fed7aa; }
+.text-pink { color: #fbcfe8; }
+
+.divider {
+  height: 2px;
+  background: #e5e7eb;
+  margin: 30px 0;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+.entry-sub {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.entry-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #555;
+}
+.mt-4 { margin-top: 20px; }
+.mt-auto { margin-top: auto; }
+
+/* The Sticker Board */
+.sticker-board {
+  position: relative;
+  height: 350px;
+  width: 100%;
+}
+
+.sticker {
+  position: absolute;
+  padding: 8px 16px;
+  font-family: 'Fredoka One', cursive;
+  border: 2px solid #000;
+  border-radius: 30px;
+  box-shadow: 3px 3px 0px #000;
+  font-size: 1rem;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.sticker:hover { z-index: 10; transform: scale(1.1) !important; }
+
+
+/* --- THE ORIGINAL 10 SKILLS --- */
+.s-frontend { background: #38bdf8; top: 20px; left: 10%; transform: rotate(-5deg); }
+.s-n8n      { background: #4ade80; top: 80px; left: 40%; transform: rotate(8deg); }
+.s-ms365    { background: #facc15; top: 120px; left: 5%; transform: rotate(-12deg); }
+.s-analysis { background: #c084fc; top: 220px; left: 45%; transform: rotate(4deg); }
+.s-sql      { background: #fb923c; top: 40px; right: 10%; transform: rotate(15deg); }
+.s-react    { background: #60a5fa; top: 120px; right: 5%; transform: rotate(-8deg); }
+.s-model    { background: #f472b6; top: 160px; right: 20%; transform: rotate(6deg); }
+.s-python   { background: #9ca3af; top: 260px; right: 1%; transform: rotate(-15deg); }
+.s-js       { background: #fbbf24; top: 280px; left: 15%; transform: rotate(-3deg); }
+.s-uiux     { background: #2dd4bf; top: 310px; right: 20%; transform: rotate(9deg); }
+
+/* --- THE NEW HARD SKILLS --- */
+.s-pandas     { background: #818cf8; top: 360px; left: 5%; transform: rotate(6deg); }
+.s-matplotlib { background: #fb7185; top: 390px; left: 45%; transform: rotate(-7deg); }
+.s-seaborn    { background: #34d399; top: 460px; left: 20%; transform: rotate(12deg); }
+.s-rprog      { background: #60a5fa; top: 410px; right: 1%; transform: rotate(-5deg); }
+.s-htmlcss    { background: #f43f5e; top: 510px; right: 35%; transform: rotate(8deg); }
+.s-figma      { background: #f472b6; top: 560px; left: 10%; transform: rotate(-10deg); }
+
+/* --- THE NEW SOFT SKILLS --- */
+.s-teamwork   { background: #fef08a; top: 10px; left: 45%; transform: rotate(3deg); } 
+.s-problem    { background: #fdba74; top: 210px; right: 60%; transform: rotate(-6deg); }
+.s-adapt      { background: #a7f3d0; top: 320px; left: 30%; transform: rotate(4deg); }
+.s-creative   { background: #d8b4fe; top: 490px; right: 5%; transform: rotate(-12deg); }
+.s-hardwork   { background: #93c5fd; top: 590px; right: 20%; transform: rotate(5deg); }
+.interests-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS: The "Folded" Book 
+   ========================================= */
+@media (max-width: 850px) {
+  .desk-background {
+    padding: 20px 10px;
+  }
+
+  /* Change from side-by-side to stacked top-to-bottom */
+  .notebook-container {
+    flex-direction: column;
+    height: auto; /* Let it stretch as long as the content needs */
+    min-height: 100vh;
+    border-radius: 15px;
+  }
+
+  /* Hide the vertical spine */
+  .spine {
+    display: none;
+  }
+
+  /* Adjust page padding for smaller screens */
+  .page {
+    padding: 30px 20px;
+  }
+
+  /* Top page gets the top rounded corners */
+  .left-page {
+    border-radius: 15px 15px 0 0;
+    border-bottom: 3px dashed #ccc; /* Creates a horizontal perforated fold */
+  }
+
+  /* Bottom page gets the bottom rounded corners */
+  .right-page {
+    border-radius: 0 0 15px 15px;
+  }
+
+  /* Move the side tabs to the top like file folders */
+  .tabs {
+    position: relative;
+    right: 0;
+    top: 0;
+    flex-direction: row; /* Horizontal line instead of vertical */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px 0;
+  }
+
+  .tab {
+    writing-mode: horizontal-tb; /* Turn text right-side up */
+    padding: 8px 12px;
+    border-radius: 8px; /* Standard pill shape */
+    font-size: 0.75rem;
+    border: 2px solid #000;
+  }
+
+  /* Redesign the sticker board so it doesn't break off-screen */
+  .sticker-board {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    padding: 20px 0;
+  }
+
+  /* Remove absolute positioning and flatten stickers for mobile readability */
+  .sticker {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: rotate(0deg) !important; 
+    box-shadow: 2px 2px 0px #000;
+  }
+}
+
+/* --- THE EXPERTISE GRID LAYOUT --- */
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
+  gap: 40px; /* Space between the items */
+  width: 100%;
+  padding-top: 10px;
+}
+
+/* Individual Item Container (Holds 1 Pic + 1 Label) */
+.expertise-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the picture and text vertically */
+  gap: 15px; /* Space between the picture and the text label */
+}
+
+/* The Text Label Underneath */
+.expertise-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  color: #333;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* The Polaroid-Style Picture Placeholders */
+.picture-placeholder {
+  width: 150px;
+  height: 150px; /* Made them perfectly square to match your sketch */
+  background: #eee; 
+  border: 6px solid #fff;
+  border-bottom: 25px solid #fff; /* Classic polaroid bottom */
+  border-radius: 4px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.5rem;
+  color: #ccc;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.picture-placeholder:hover {
+  transform: rotate(0deg) scale(1.05); /* Straightens out and pops up slightly */
+  box-shadow: 8px 8px 25px rgba(0,0,0,0.4);
+}
+
+/* Scrapbook Scattering Effect */
+.picture-placeholder.p1 { transform: rotate(-4deg); }
+.picture-placeholder.p2 { transform: rotate(3deg); }
+
+.skills-summary-text {
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.83rem;
+  color:#facc15; /* A sleek, cool gray */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px; /* Pushes the Expertise section down slightly to give it room to breathe */
+}
+
+/* =========================================
+   PROJECTS GALLERY GRID
+   ========================================= */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, 1fr);    /* 2 rows = 4 projects total */
+  gap: 15px; /* Slightly tighter gap to fit all 4 on one page */
+  margin-top: 10px;
+}
+
+/* Shrink the card size slightly so they fit 4 per page comfortably */
+.project-image-container {
+  height: 140px; /* Reduced height from 180px */
+  padding: 10px;
+}
+
+/* The full card wrapper */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* The framed box for the project image/text */
+.project-image-container {
+  border: 1px solid #ccc;
+  padding: 15px;
+  background: #fff;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.project-image-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Faded style for empty placeholders */
+.project-image-container.p-empty {
+  background: #f9f9f9;
+  border: 1px dashed #ccc;
+}
+
+/* Project Titles */
+.project-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.p-green { color: #4ade80; -webkit-text-stroke: 1px #000; text-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
+.p-blue { color: #93c5fd; -webkit-text-stroke: 1px #000; text-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
+.p-gray { color: #ccc; }
+
+/* Short Description Text */
+.project-desc {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* The Bottom Link Area */
+.project-footer {
+  display: flex;
+  justify-content: flex-end; /* Pushes the text to the right */
+  padding-top: 5px;
+  border-bottom: 1px solid #ccc; /* Creates the full-width line from the image */
+  padding-bottom: 5px;
+}
+
+.project-link {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #555;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.project-link:hover {
+  color: #000;
+}
+
+/* Contact Section Styling */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-item {
+  display: block;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  color: #333;
+  text-decoration: none;
+  padding: 15px;
+  border: 2px solid #000;
+  border-radius: 12px;
+  background: #fff;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0px #000;
+}
+
+.contact-item:hover {
+  background: #fef08a;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+}
