@@ -258,7 +258,7 @@ export default function App() {
           SECTION 1
           ===================================================== */}
         <SectionBanner
-          src="/public/section1.png"
+          src="/section1.png"
           alt="Ashanti's portfolio banner"
           label="hero banner — /public/banners/hero.png"
         />
@@ -402,7 +402,7 @@ export default function App() {
       <div className="section-group">
 
         <SectionBanner
-          src="/public/section2.png"
+          src="/section2.png"
           alt="Projects banner"
           label="projects banner — /public/banners/projects.png"
         />
@@ -458,7 +458,7 @@ export default function App() {
       <div className="section-group">
 
         <SectionBanner
-          src="/public/section3.png"
+          src="/section3.png"
           alt="Let's connect banner"
           label="connect banner — /public/banners/connect.png"
         />
