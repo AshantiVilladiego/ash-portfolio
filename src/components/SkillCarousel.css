@@ -1,0 +1,63 @@
+.skill-marquee-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 3rem 0;
+  
+  /* Added a temporary colorful background so you can see the glass effect! 
+     Remove this if your website already has a background color/image. */
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.skill-marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+}
+
+.skill-marquee-track.left {
+  animation: marqueeScrollLeft 25s linear infinite;
+}
+
+.skill-marquee-track.right {
+  animation: marqueeScrollRight 25s linear infinite;
+}
+
+.skill-tile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  color: #1f2937; /* Change to #ffffff if your site has a dark background */
+  
+  /* --- GLASSMORPHISM EFFECT --- */
+  background: rgba(255, 255, 255, 0.25); /* Semi-transparent white */
+  backdrop-filter: blur(12px); /* The blur effect behind the element */
+  -webkit-backdrop-filter: blur(12px); /* For Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Frosty edge */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+}
+
+.skill-tile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes marqueeScrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 0.75rem)); }
+}
+
+@keyframes marqueeScrollRight {
+  0% { transform: translateX(calc(-50% - 0.75rem)); }
+  100% { transform: translateX(0); }
+}
