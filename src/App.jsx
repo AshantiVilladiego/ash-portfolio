@@ -473,13 +473,6 @@ export default function App() {
         </Reveal>
 
         <Reveal direction="up" delay={0.03}>
-          <p className="entry-desc contact-intro">
-            I'm stepping into the industry and eager to apply my background
-            in Data Analysis and Systems Development to real-world
-            challenges. Whether you're looking to collaborate, have an
-            opening on your team, or just want to swap movie
-            recommendations — I'd love to connect!
-          </p>
         </Reveal>
 
         <Reveal direction="up" delay={0.05}>
@@ -492,7 +485,7 @@ export default function App() {
             delayBetweenCommands={900}
             loop
 
-            commands={['cat connect.txt']}
+            commands={['let's connect.txt']}
 
             outputs={{
 
