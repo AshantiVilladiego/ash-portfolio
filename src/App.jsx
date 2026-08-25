@@ -485,7 +485,7 @@ export default function App() {
             delayBetweenCommands={900}
             loop
 
-            commands={['let's connect.txt']}
+            commands={['connect.txt']}
 
             outputs={{
 
