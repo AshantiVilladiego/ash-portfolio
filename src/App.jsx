@@ -560,7 +560,7 @@ export default function App() {
         <Reveal direction="up" delay={0.15}>
 
           <a
-            href="/Villadiego, Ashanti Louise - Resume.pdf"
+            href="/Villadiego, Ashanti Louise B. - Resume.pdf"
             target="_blank"
             rel="noreferrer"
             className="resume-sticky"
